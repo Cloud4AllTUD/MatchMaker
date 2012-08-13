@@ -86,6 +86,41 @@ public class Main {
         solution.addSolution("screen-reader", attributes);
         sList.add(solution);
 
+        // NVDA
+        solution = new Solution("NVDA");
+        requirement = new DeviceProfileEntry("os");
+        requirement.setValue("type", new JsonPrimitive("windows"));
+        requirement.setValue("subtype", new JsonPrimitive(""));
+        requirement.setValue("version", new JsonPrimitive("xp"));
+        solution.addRequirement(requirement);
+        attributes = new ArrayList<String>();
+        attributes.add("preferred-lang");
+        attributes.add("speech-rate");
+        solution.addSolution("screen-reader", attributes);
+        sList.add(solution);
+
+        // font-size
+        solution = new Solution("Font-Size");
+        requirement = new DeviceProfileEntry("os");
+        requirement.setValue("type", new JsonPrimitive("linux"));
+        requirement.setValue("subtype", new JsonPrimitive("debian"));
+        requirement.setValue("version", new JsonPrimitive(6));
+        solution.addRequirement(requirement);
+        requirement = new DeviceProfileEntry("os");
+        requirement.setValue("type", new JsonPrimitive("linux"));
+        requirement.setValue("subtype", new JsonPrimitive("ubuntu"));
+        requirement.setValue("version", new JsonPrimitive(12.04));
+        solution.addRequirement(requirement);
+        requirement = new DeviceProfileEntry("os");
+        requirement.setValue("type", new JsonPrimitive("windows"));
+        requirement.setValue("subtype", new JsonPrimitive(""));
+        requirement.setValue("version", new JsonPrimitive("xp"));
+        solution.addRequirement(requirement);
+        attributes = new ArrayList<String>();
+        attributes.add("preferred-font-size");
+        solution.addSolution("font-size", attributes);
+        sList.add(solution);
+
         System.out.println("Solution list has " + sList.size() + " elements");
         for(Solution sol : sList)
             System.out.println(sol.toString());

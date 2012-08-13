@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="Rest-Test-Client" default="all" basedir=".">
+<project name="Match-Maker" default="all" basedir=".">
 
 <property name="src.dir"     value="src"/>
 <property name="build.dir"   value="build"/>

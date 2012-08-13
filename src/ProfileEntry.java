@@ -18,7 +18,7 @@ public class ProfileEntry {
     }
 
     public void setName(String var) {
-        this.name = var;
+        this.name = var.split("/")[var.split("/").length-1];
     }
     
     public JsonPrimitive getValue() {
