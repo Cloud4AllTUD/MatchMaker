@@ -6,22 +6,22 @@ public class Parser {
 
     public Parser() {}
 
-    public ArrayList<ProfileEntry> parseUserProfile(String jsonFile) {
+    public ArrayList<UserProfileEntry> parseUserProfile(String jsonFile) {
         JsonParser parser = new JsonParser();
         JsonElement jsonElement = parser.parse(jsonFile);
         return recursiveUserProfile(jsonElement, null);
     }
 
-    private ArrayList<ProfileEntry> recursiveUserProfile(JsonElement jElement, ArrayList<ProfileEntry> pList) {
+    private ArrayList<UserProfileEntry> recursiveUserProfile(JsonElement jElement, ArrayList<UserProfileEntry> pList) {
         if(jElement.isJsonArray()) {
-            ArrayList<ProfileEntry> profileList = new ArrayList<ProfileEntry>();
+            ArrayList<UserProfileEntry> profileList = new ArrayList<UserProfileEntry>();
             for(JsonElement jsonArrayElement : jElement.getAsJsonArray())
                 profileList = recursiveUserProfile(jsonArrayElement.getAsJsonObject(), profileList);
             return profileList;
         }
         if(jElement.isJsonObject()) {
             JsonObject jObject = jElement.getAsJsonObject();
-            ProfileEntry pEntry = new ProfileEntry();
+            UserProfileEntry pEntry = new UserProfileEntry();
             if(jObject.has("name")) {
                 JsonPrimitive primitive = jObject.getAsJsonPrimitive("name");
                 if (primitive.isString())

@@ -47,13 +47,13 @@ public class Main {
 
         // parse the loaded profiles
         Parser p = new Parser();
-        ArrayList<ProfileEntry> pList = p.parseUserProfile(userProfile);
+        ArrayList<UserProfileEntry> pList = p.parseUserProfile(userProfile);
         if(pList == null) {
             System.out.println("Parsing error in the user profile");
             System.exit(3);
         }
         System.out.println("User profile list has " + pList.size() + " elements");
-        for(ProfileEntry pEntry : pList)
+        for(UserProfileEntry pEntry : pList)
             System.out.println(pEntry.toString());
 
         ArrayList<DeviceProfileEntry> dList = p.parseDeviceProfile(deviceProfile);
