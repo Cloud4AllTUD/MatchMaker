@@ -53,7 +53,7 @@ public class Parser {
                 if(mainOption.getValue().isJsonObject()) {
                     for(Map.Entry<String, JsonElement> subOption : mainOption.getValue().getAsJsonObject().entrySet()) {
                         if(subOption.getValue().isJsonPrimitive())
-                            dEntry.setValue(subOption.getKey(), subOption.getValue().getAsJsonPrimitive());
+                            dEntry.setSettingsValue(subOption.getKey(), subOption.getValue().getAsJsonPrimitive());
                         else
                             return null;
                     }

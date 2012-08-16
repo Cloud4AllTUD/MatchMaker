@@ -1,4 +1,6 @@
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.google.gson.*;
 
@@ -14,9 +16,13 @@ import com.google.gson.*;
 
 public class Main {
 
+    private final static Logger logger = Logger.getLogger("MainLogger");
+
     public static void main(String[] args) {
         String userProfileFileName = "./data/user_profile.json";
         String deviceProfileFileName = "./data/device_profile.json";
+        logger.setLevel(Level.FINE);
+        //LogManager.getLogManager().setLevel(Level.FINE);
 
         // load profiles from files
         IOOperations ioController = new IOOperations();
@@ -71,14 +77,18 @@ public class Main {
         // orca
         Solution solution = new Solution("orca");
         DeviceProfileEntry requirement = new DeviceProfileEntry("os");
-        requirement.setValue("type", new JsonPrimitive("linux"));
-        requirement.setValue("subtype", new JsonPrimitive("debian"));
-        requirement.setValue("version", new JsonPrimitive(6));
+        requirement.setSettingsValue("type", new JsonPrimitive("linux"));
+        requirement.setSettingsValue("subtype", new JsonPrimitive("debian"));
+        requirement.setSettingsValue("version", new JsonPrimitive(6));
         solution.addRequirement(requirement);
         requirement = new DeviceProfileEntry("os");
-        requirement.setValue("type", new JsonPrimitive("linux"));
-        requirement.setValue("subtype", new JsonPrimitive("ubuntu"));
-        requirement.setValue("version", new JsonPrimitive(12.04));
+        requirement.setSettingsValue("type", new JsonPrimitive("linux"));
+        requirement.setSettingsValue("subtype", new JsonPrimitive("ubuntu"));
+        requirement.setSettingsValue("version", new JsonPrimitive(12.04));
+        solution.addRequirement(requirement);
+        requirement = new DeviceProfileEntry("desktop-environment");
+        requirement.setSettingsValue("name", new JsonPrimitive("gnome"));
+        requirement.setSettingsValue("version", new JsonPrimitive(2.30));
         solution.addRequirement(requirement);
         ArrayList<String> attributes = new ArrayList<String>();
         attributes.add("preferred-lang");
@@ -89,9 +99,9 @@ public class Main {
         // NVDA
         solution = new Solution("NVDA");
         requirement = new DeviceProfileEntry("os");
-        requirement.setValue("type", new JsonPrimitive("windows"));
-        requirement.setValue("subtype", new JsonPrimitive(""));
-        requirement.setValue("version", new JsonPrimitive("xp"));
+        requirement.setSettingsValue("type", new JsonPrimitive("windows"));
+        requirement.setSettingsValue("subtype", new JsonPrimitive(""));
+        requirement.setSettingsValue("version", new JsonPrimitive("xp"));
         solution.addRequirement(requirement);
         attributes = new ArrayList<String>();
         attributes.add("preferred-lang");
@@ -102,19 +112,19 @@ public class Main {
         // font-size
         solution = new Solution("Font-Size");
         requirement = new DeviceProfileEntry("os");
-        requirement.setValue("type", new JsonPrimitive("linux"));
-        requirement.setValue("subtype", new JsonPrimitive("debian"));
-        requirement.setValue("version", new JsonPrimitive(6));
+        requirement.setSettingsValue("type", new JsonPrimitive("linux"));
+        requirement.setSettingsValue("subtype", new JsonPrimitive("debian"));
+        requirement.setSettingsValue("version", new JsonPrimitive(6));
         solution.addRequirement(requirement);
         requirement = new DeviceProfileEntry("os");
-        requirement.setValue("type", new JsonPrimitive("linux"));
-        requirement.setValue("subtype", new JsonPrimitive("ubuntu"));
-        requirement.setValue("version", new JsonPrimitive(12.04));
+        requirement.setSettingsValue("type", new JsonPrimitive("linux"));
+        requirement.setSettingsValue("subtype", new JsonPrimitive("ubuntu"));
+        requirement.setSettingsValue("version", new JsonPrimitive(12.04));
         solution.addRequirement(requirement);
         requirement = new DeviceProfileEntry("os");
-        requirement.setValue("type", new JsonPrimitive("windows"));
-        requirement.setValue("subtype", new JsonPrimitive(""));
-        requirement.setValue("version", new JsonPrimitive("xp"));
+        requirement.setSettingsValue("type", new JsonPrimitive("windows"));
+        requirement.setSettingsValue("subtype", new JsonPrimitive(""));
+        requirement.setSettingsValue("version", new JsonPrimitive("xp"));
         solution.addRequirement(requirement);
         attributes = new ArrayList<String>();
         attributes.add("preferred-font-size");
@@ -123,7 +133,20 @@ public class Main {
 
         System.out.println("Solution list has " + sList.size() + " elements");
         for(Solution sol : sList)
-            System.out.println(sol.toString());
+            System.out.println(sol.getName());
+
+        // start the match making process
+        MatchMaker mm = new MatchMaker();
+        // first: filter all incompatible solutions from the solution list
+        sList = mm.filterIncompatibleSolutions(sList, dList);
+        // print solution list afterwards
+        System.out.println("All incompatible solutions were filtered.\nSolution list has " + sList.size() + " elements");
+        for(Solution sol : sList)
+            System.out.println(sol.getName());
+        System.out.println("\n");
+
+        // next, match the available solutions with the user profile
+
 
     } // end of function "Main"
 } // end of class "Main"

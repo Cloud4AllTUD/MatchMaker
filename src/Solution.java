@@ -12,6 +12,10 @@ public class Solution {
         this.solutionList = new HashMap<String,ArrayList<String>>();
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void addRequirement(DeviceProfileEntry dEntry) {
         requirements.add(dEntry);
     }

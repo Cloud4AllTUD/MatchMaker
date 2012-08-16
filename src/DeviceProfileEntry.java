@@ -19,11 +19,15 @@ public class DeviceProfileEntry {
         this.name = s;
     }
 
+    public HashMap<String,JsonPrimitive> getSettings() {
+        return this.settings;
+    }
+
     /**
      * returns the saved setting value for the given key
      * if the map does not contain the key, the method returns null
      */
-    public JsonPrimitive getValue(String key) {
+    public JsonPrimitive getSettingsValue(String key) {
         return this.settings.get(key);
     }
 
@@ -32,7 +36,7 @@ public class DeviceProfileEntry {
      * returns null if the key is new
      * otherwise it returns the old, overwritten value
      */
-    public JsonPrimitive setValue(String key, JsonPrimitive value) {
+    public JsonPrimitive setSettingsValue(String key, JsonPrimitive value) {
         return this.settings.put(key, value);
     }
 
@@ -42,4 +46,5 @@ public class DeviceProfileEntry {
             result = result + "  " + key + " = " + this.settings.get(key) + "\n";
         return result;
     }
+
 }
