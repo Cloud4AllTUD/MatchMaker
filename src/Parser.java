@@ -6,7 +6,7 @@ public class Parser {
 
     public Parser() {}
 
-    public ArrayList<UserProfileEntry> parseUserProfile(String jsonFile) {
+    public ArrayList<UserProfileEntry> parseUserProfile(String jsonFile) throws JsonSyntaxException {
         JsonParser parser = new JsonParser();
         JsonElement jsonElement = parser.parse(jsonFile);
         return recursiveUserProfile(jsonElement, null);
@@ -42,7 +42,7 @@ public class Parser {
         return null;
     }
 
-    public ArrayList<DeviceProfileEntry> parseDeviceProfile(String jsonFile) {
+    public ArrayList<DeviceProfileEntry> parseDeviceProfile(String jsonFile) throws JsonSyntaxException {
         JsonParser parser = new JsonParser();
         JsonElement jElement = parser.parse(jsonFile);
 

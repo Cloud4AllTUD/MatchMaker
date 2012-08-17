@@ -52,4 +52,14 @@ public class ProfileManager {
         }
         return true;
     }
+
+    public Boolean conditionMatchesUserProfile(UserProfileEntry condition, ArrayList<UserProfileEntry> userProfile) {
+        for(UserProfileEntry uEntry : userProfile) {
+            if( condition.getName().equals(uEntry.getName()) )
+                return true;
+            if( condition.getValue().equals(uEntry.getValue()) )
+                return true;
+        }
+        return false;
+    }
 }

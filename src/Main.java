@@ -53,23 +53,40 @@ public class Main {
 
         // parse the loaded profiles
         Parser p = new Parser();
-        ArrayList<UserProfileEntry> pList = p.parseUserProfile(userProfile);
-        if(pList == null) {
-            System.out.println("Parsing error in the user profile");
+        ArrayList<UserProfileEntry> uList = new ArrayList<UserProfileEntry>();
+        try {
+            uList = p.parseUserProfile(userProfile);
+        } catch (JsonSyntaxException e) {
+            System.err.println("The json syntax of the user profile is malformed\n" + e);
             System.exit(3);
         }
-        System.out.println("User profile list has " + pList.size() + " elements");
-        for(UserProfileEntry pEntry : pList)
-            System.out.println(pEntry.toString());
-
-        ArrayList<DeviceProfileEntry> dList = p.parseDeviceProfile(deviceProfile);
-        if(dList == null) {
-            System.out.println("Parsing error in the device profile");
+            
+        if(uList == null) {
+            System.err.println("The syntax of the user profile is valide but the it's structure is not supported. For a working example look at the example file \"user_profile.json\" in the data directory.");
             System.exit(4);
+        }
+        System.out.println("User profile list has " + uList.size() + " elements");
+        for(UserProfileEntry pEntry : uList)
+            System.out.println(pEntry.toString());
+        System.out.println("\n");
+        
+        // parse the device profile
+        ArrayList<DeviceProfileEntry> dList = new ArrayList<DeviceProfileEntry>();
+        try {
+            dList = p.parseDeviceProfile(deviceProfile);
+         } catch (JsonSyntaxException e) {
+            System.err.println("The json syntax of the device profile is malformed\n" + e);
+            System.exit(5);
+        }
+
+        if(dList == null) {
+            System.err.println("The syntax of the device profile is valide but the it's structure is not supported. For a working example look at the example file \"device_profile.json\" in the data directory.");
+            System.exit(6);
         }
         System.out.println("Device profile list has " + dList.size() + " elements");
         for(DeviceProfileEntry dEntry : dList)
             System.out.println(dEntry.toString());
+        System.out.println("\n");
 
 
         // create available solutions
@@ -146,7 +163,52 @@ public class Main {
         System.out.println("\n");
 
         // next, match the available solutions with the user profile
+        // returns a list of solutions which fit the requirements of the user
+        // profile
+        HashMap<String,HashSet<Solution>> sMap = mm.getSolutionsBasedOnUserProfile(sList, uList);
+        System.out.println("The following solutions with thair settings were found:");
+        for(String solutionName : sMap.keySet()) {
+            System.out.print(solutionName + ": ");
+            for(Solution solEntry : sMap.get(solutionName))
+                System.out.print(solEntry.getName() + ", ");
+/*                for(String attr : solEntry.getSolutions().get(solutionName))
+                    System.out.println(attr + ", ");*/
+            System.out.println("\n");
+        }
 
-
+        // find the config values for the given solutions
+        // if more than one plugin is available for a solution, the first one
+        // will be chosen
+        String jsonSettings = "{\n";
+        for(String solutionName : sMap.keySet()) {
+            System.out.println("Search for the settings values for the solution: " + solutionName);
+            HashSet<Solution> availablePlugins = sMap.get(solutionName);
+            if(availablePlugins.isEmpty()) {
+                System.out.println("The solution " + solutionName + " has no plugins.");
+                continue;
+            }
+            if(availablePlugins.size() > 1)
+                System.out.println("For the solution " + solutionName + " are " + availablePlugins + " plugins available. At the moment, the first in the list is taken");
+            Solution chosenPlugin = new Solution("");
+            for(Solution plugin : availablePlugins) {
+                chosenPlugin = plugin;
+                break;
+            }
+            System.out.println("Find the settings for the plugin: " + chosenPlugin.getName());
+            HashMap<String,JsonPrimitive> pluginSettings = mm.getSettingsForAttributes(uList, chosenPlugin.getSolutions().get(solutionName)); 
+            if(pluginSettings.isEmpty()) {
+                System.out.println("For " + chosenPlugin.getName() + " exist no setting values in the user profile.\nThe solution " + solutionName + " stays unconfigured.");
+                continue;
+            }
+            jsonSettings = jsonSettings + "\t\"" + chosenPlugin.getName() + "\" : {\n";
+            for(String settingName : pluginSettings.keySet()) {
+                System.out.println(settingName + " = " + pluginSettings.get(settingName));
+                jsonSettings = jsonSettings + "\t\t\"" + settingName + "\" : " + pluginSettings.get(settingName) + ",\n";
+            }
+        jsonSettings = jsonSettings.substring(0, jsonSettings.length()-2) + "\n\t},\n";
+        }
+        jsonSettings = jsonSettings.substring(0, jsonSettings.length()-2) + "\n}";
+        System.out.println("\nThe settings in json format:\n" + jsonSettings);
+        
     } // end of function "Main"
 } // end of class "Main"

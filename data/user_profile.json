@@ -1,7 +1,7 @@
 [
 { "name" : "http://gpii.org/ns/up/preferred-lang",
 "condition" : "",
-"value" : "en"
+"value" : "de"
 },
 { "name" : "http://gpii.org/ns/up/volume",
 "condition" : "value('http://gpii.org/ns/time/local-time') >= '09:00:00' && value('http://gpii.org/ns/time/local-time') <= '17:00:00'",

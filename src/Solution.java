@@ -32,6 +32,22 @@ public class Solution {
         return this.solutionList;
     }
 
+    /**
+     * checks if a given attribute is supported by one of the solutions
+     * if so, the solution name of the belonging attribute is returned
+     * otherwise the function returns null
+     * at the moment, attributes which belong to more than one solution are not
+     * supported, the first match wins and the first solution name is returned
+     */
+    public String hasAttribute(String attr) {
+        for(String solutionName : this.solutionList.keySet()) {
+            for( String s : solutionList.get(solutionName) )
+                if(s.equals(attr))
+                    return solutionName;
+        }
+        return null;
+    }
+
     public String toString() {
         String result = "Solution: " + this.name + "\n";
         result = result + "requirements:\n";
