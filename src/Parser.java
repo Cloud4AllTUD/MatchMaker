@@ -2,16 +2,33 @@ import java.util.*;
 
 import com.google.gson.*;
 
+/**
+ * Json parser class
+ * creates user - and device profile entrys
+ */
 public class Parser {
 
     public Parser() {}
 
+    /**
+     * Method to parse the contents of a json file which contains the user
+     * profile
+     * returns an ArrayList of UserProfileEntrys
+     */
     public ArrayList<UserProfileEntry> parseUserProfile(String jsonFile) throws JsonSyntaxException {
         JsonParser parser = new JsonParser();
         JsonElement jsonElement = parser.parse(jsonFile);
         return recursiveUserProfile(jsonElement, null);
     }
 
+    /**
+     * This is the main part of the user profile parser
+     * This private function parses the json file recursively
+     * It only can convert a user profile with the structure, described in the
+     * text file under data/user_profile.json
+     * If the given user profile does not have that structure, the function
+     * returns null
+     */
     private ArrayList<UserProfileEntry> recursiveUserProfile(JsonElement jElement, ArrayList<UserProfileEntry> pList) {
         if(jElement.isJsonArray()) {
             ArrayList<UserProfileEntry> profileList = new ArrayList<UserProfileEntry>();
@@ -42,6 +59,13 @@ public class Parser {
         return null;
     }
 
+    /**
+     * A function to parse the device profile
+     * An example of such a profile can be found under data/device_profile.json
+     * returns an ArrayList of DeviceProfileEntrys
+     *
+     * and null if the profile structure is malformed
+     */
     public ArrayList<DeviceProfileEntry> parseDeviceProfile(String jsonFile) throws JsonSyntaxException {
         JsonParser parser = new JsonParser();
         JsonElement jElement = parser.parse(jsonFile);

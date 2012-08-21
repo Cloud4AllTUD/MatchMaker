@@ -3,6 +3,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.google.gson.JsonPrimitive;
 
+/**
+ * A little helper class with a few useful functions
+ */
 public class ProfileManager {
     
     private final static Logger logger = Logger.getLogger("MainLogger");
@@ -53,6 +56,14 @@ public class ProfileManager {
         return true;
     }
 
+    /**
+     * This is a helper function of the MatchMaker class
+     * It checks, if the condition of a user profile entry is conform with the
+     * whole user profile
+     * if so, it returns true and the corresponding value of the user profile
+     * entry is used for the attribute
+     * else it returns false
+     */
     public Boolean conditionMatchesUserProfile(UserProfileEntry condition, ArrayList<UserProfileEntry> userProfile) {
         for(UserProfileEntry uEntry : userProfile) {
             if( condition.getName().equals(uEntry.getName()) )

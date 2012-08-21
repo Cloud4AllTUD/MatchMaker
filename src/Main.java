@@ -9,11 +9,6 @@ import com.google.gson.*;
 // import com.sun.jersey.api.client.ClientResponse;
 // import com.sun.jersey.api.client.WebResource;
 
-// import com.google.gson.JsonParser;
-//import com.google.gson.JsonElement;
-//import java.io.FileReader;
-//import java.io.FileNotFoundException;
-
 public class Main {
 
     private final static Logger logger = Logger.getLogger("MainLogger");
@@ -21,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         String userProfileFileName = "./data/user_profile.json";
         String deviceProfileFileName = "./data/device_profile.json";
-        logger.setLevel(Level.FINE);
+        logger.setLevel(Level.WARNING);
         //LogManager.getLogManager().setLevel(Level.FINE);
 
         // load profiles from files

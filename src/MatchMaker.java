@@ -3,6 +3,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.google.gson.*;
 
+/**
+ * The match making class
+ */
+
 public class MatchMaker {
 
     private final static Logger logger = Logger.getLogger("MainLogger");
@@ -60,11 +64,20 @@ public class MatchMaker {
     return compatible;
     }
 
+    /**
+     * This method gets a list of solutions and the user profile
+     * By means of the user profile it creates a list of solution names which
+     * result in the user profile entrys and the supported attributes of the
+     * solutions
+     * It returns a HashMap, whereat the solution name is the key and a set of
+     * solutions is the regarding value
+     * As a consequence one solution name, for example "screen-reader" can have
+     * more than one concrete solution, for example "Jaws" and "NVDA"
+     */
     public HashMap<String,HashSet<Solution>> getSolutionsBasedOnUserProfile( ArrayList<Solution> sList, ArrayList<UserProfileEntry> userProfile ) {
         HashMap<String,HashSet<Solution>> solutionMap = new HashMap<String,HashSet<Solution>>();
         for(UserProfileEntry uEntry : userProfile ) {
             String attrName = uEntry.getName();
-            System.out.println("attr: " + attrName);
             for( Solution sol : sList ) {
                 String newSolution = sol.hasAttribute(attrName);
                 if( newSolution == null )
@@ -77,17 +90,26 @@ public class MatchMaker {
                     foundSolutions = new HashSet<Solution>();
                 // add the solution sol to the list
                 Boolean b = foundSolutions.add(sol);
-                System.out.println(sol.getName() + " added");
                 solutionMap.put(newSolution, foundSolutions);
             }
         }
         return solutionMap;
     }
 
+    /**
+     * This function gets a user profile and a list of attributes. It returns
+     * the attributes and it's corresponding values, which are extracted from
+     * the user profile.
+     * If an attribute is available in the user profile more than ones the one
+     * with a given condition is taken. Of course only, if the condition is
+     * fulfilled.
+     */
     public HashMap<String,JsonPrimitive> getSettingsForAttributes(ArrayList<UserProfileEntry> userProfile, ArrayList<String> attributes) {
         HashMap<String,JsonPrimitive> settings = new HashMap<String,JsonPrimitive>();
         for(String attr : attributes) {
             for(UserProfileEntry uEntry : userProfile) {
+                // if the attribute is not in the user profile entry, jump to the next
+                // one
                 if(! attr.equals(uEntry.getName()) )
                     continue;
 
