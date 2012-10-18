@@ -1,0 +1,20 @@
+<project default="run">
+
+	<dirname property="project.dir" file="${ant.file}" />
+	<property file="build.properties" />
+	<property name="main.method" value="main" />
+
+	<target name="compile">
+		<ant antfile="../openrules.config/build.xml" target="compile.xls">
+			<property name="main.xls.file" value= "${main.xls.file}" />
+		</ant>
+	</target>
+	
+	<target name="run">
+		<ant antfile="../openrules.config/build.xml" target="run.openl">
+			<property name="arg.line" value="-file ${main.xls.file} -openl com.openrules.lang.xls ${main.xls.method}" />
+			<property name="classpath" value="${basedir}/bin" />
+		</ant>
+	</target>
+
+</project>
