@@ -1,0 +1,13 @@
+@prefix sf: <http://storeFront.com#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+
+[DeleteJoan:
+->
+(sf:command sf:deletePerson sf:Joan)
+]
+
+[ItemSold:
+->
+(sf:command sf:wasBought sf:ThorActionFigure)
+(sf:command sf:boughtBy sf:Lisa)
+]
