@@ -109,6 +109,43 @@ public class OntologyManager
     public static final int PlatformVendors_ID = 95;
     public static final int SolutionVendors_ID = 96;
     
+    //version 1_2
+    
+    public static final int PlatformSettings_AndroidPhoneInteractionSettings_ID = 97;
+    public static final int PlatformSettings_AndroidPhoneSettings_ID = 98;
+    public static final int PlatformSettings_DesktopSettings_ID = 99;
+    public static final int PlatformSettings_DigitalTV_ID = 100;
+    public static final int PlatformSettings_IOSPhoneSettings_ID = 101;
+    public static final int PlatformSettings_SimplePhoneSettings_ID = 102;
+    public static final int PlatformSettings_WindowsPhoneSettings_ID = 103;
+
+    public static final int ApplicationSettings_EasyOneCommunicatorSettings_ID = 104;
+    public static final int ApplicationSettings_EKioskSettings_ID = 105;
+    public static final int ApplicationSettings_Maavis_ID = 106;
+    public static final int ApplicationSettings_MSSurfaceSettings_ID = 107;
+    public static final int ApplicationSettings_ReadWriteGold_TextHelp_ID = 108;
+    public static final int ApplicationSettings_SAToGoSettings_ID = 109;
+    public static final int ApplicationSettings_SocialNetworkAppSettings_ID = 110;
+    public static final int ApplicationSettings_SpeechStream_TextHelp_ID = 111;
+    public static final int ApplicationSettings_WebAnywhereSettings_ID = 112;
+
+    public static final int GNOMEDesktopAccessibilitySettings_ID = 113;
+
+    public static final int BrowserSettings_Firefox10_0_1Settings_ID = 114;
+    public static final int BrowserSettings_IE8Settings_ID = 115;
+
+    public static final int ScreenMagnifierSettings_ISO24751ScreenMagnifierSettings_ID = 116;
+    public static final int ScreenMagnifierSettings_LinuxBuiltInScreenMagnifierSettings_ID = 117;
+    public static final int ScreenMagnifierSettings_WindowsBuiltInScreenMagnifierSettings_ID = 118;
+    public static final int ScreenMagnifierSettings_ZoomTextSettings_ID = 119;
+
+    public static final int ScreenReaderSettings_ISO24751ScreenReaderSettings_ID = 120;
+    public static final int ScreenReaderSettings_JAWSSettings_ID = 121;
+    public static final int ScreenReaderSettings_NVDASettings_ID = 122;
+    public static final int ScreenReaderSettings_OrcaSettings_ID = 123;
+    public static final int ScreenReaderSettings_WinSevenBuiltInNarratorSettings_ID = 124;
+    
+    
     private Model model;
     
     private static OntologyManager instance = null;
@@ -116,7 +153,7 @@ public class OntologyManager
     
     private OntologyManager() 
     {
-        printDebugInfo = false;
+        printDebugInfo = true;
         
         // create an empty model
         model = ModelFactory.createDefaultModel();
@@ -1403,6 +1440,71 @@ public class OntologyManager
             return "PlatformVendors";
         else if(tmpClassID == SolutionVendors_ID)
             return "SolutionVendors";
+        
+        //version 1_2
+        
+        else if(tmpClassID == PlatformSettings_AndroidPhoneInteractionSettings_ID)
+            return "AndroidPhoneInteractionSettings";
+        else if(tmpClassID == PlatformSettings_AndroidPhoneSettings_ID)
+            return "AndroidPhoneSettings";
+        else if(tmpClassID == PlatformSettings_DesktopSettings_ID)
+            return "DesktopSettings";
+        else if(tmpClassID == PlatformSettings_DigitalTV_ID)
+            return "DigitalTV";
+        else if(tmpClassID == PlatformSettings_IOSPhoneSettings_ID)
+            return "IOSPhoneSettings";
+        else if(tmpClassID == PlatformSettings_SimplePhoneSettings_ID)
+            return "SimplePhoneSettings";
+        else if(tmpClassID == PlatformSettings_WindowsPhoneSettings_ID)
+            return "";
+
+        else if(tmpClassID == ApplicationSettings_EasyOneCommunicatorSettings_ID)
+            return "EasyOneCommunicatorSettings";
+        else if(tmpClassID == ApplicationSettings_EKioskSettings_ID)
+            return "EKioskSettings";
+        else if(tmpClassID == ApplicationSettings_Maavis_ID)
+            return "Maavis";
+        else if(tmpClassID == ApplicationSettings_MSSurfaceSettings_ID)
+            return "MSSurfaceSettings";
+        else if(tmpClassID == ApplicationSettings_ReadWriteGold_TextHelp_ID)
+            return "ReadWriteGold_TextHelp";
+        else if(tmpClassID == ApplicationSettings_SAToGoSettings_ID)
+            return "SAToGoSettings";
+        else if(tmpClassID == ApplicationSettings_SocialNetworkAppSettings_ID)
+            return "SocialNetworkAppSettings";
+        else if(tmpClassID == ApplicationSettings_SpeechStream_TextHelp_ID)
+            return "SpeechStream_TextHelp";
+        else if(tmpClassID == ApplicationSettings_WebAnywhereSettings_ID)
+            return "WebAnywhereSettings";
+
+        else if(tmpClassID == GNOMEDesktopAccessibilitySettings_ID)
+            return "GNOMEDesktopAccessibilitySettings";
+
+        else if(tmpClassID == BrowserSettings_Firefox10_0_1Settings_ID)
+            return "Firefox10_0_1Settings";
+        else if(tmpClassID == BrowserSettings_IE8Settings_ID)
+            return "IE8Settings";
+
+        else if(tmpClassID == ScreenMagnifierSettings_ISO24751ScreenMagnifierSettings_ID)
+            return "ISO24751ScreenMagnifierSettings";
+        else if(tmpClassID == ScreenMagnifierSettings_LinuxBuiltInScreenMagnifierSettings_ID)
+            return "LinuxBuiltInScreenMagnifierSettings";
+        else if(tmpClassID == ScreenMagnifierSettings_WindowsBuiltInScreenMagnifierSettings_ID)
+            return "WindowsBuiltInScreenMagnifierSettings";
+        else if(tmpClassID == ScreenMagnifierSettings_ZoomTextSettings_ID)
+            return "ZoomTextSettings";
+
+        else if(tmpClassID == ScreenReaderSettings_ISO24751ScreenReaderSettings_ID)
+            return "ISO24751ScreenReaderSettings";
+        else if(tmpClassID == ScreenReaderSettings_JAWSSettings_ID)
+            return "JAWSSettings";
+        else if(tmpClassID == ScreenReaderSettings_NVDASettings_ID)
+            return "NVDASettings";
+        else if(tmpClassID == ScreenReaderSettings_OrcaSettings_ID)
+            return "OrcaSettings";
+        else if(tmpClassID == ScreenReaderSettings_WinSevenBuiltInNarratorSettings_ID)
+            return "WinSevenBuiltInNarratorSettings";
+        
         return "UNKNOWN CLASS ID!";
     }
     
@@ -1850,6 +1952,308 @@ public class OntologyManager
                         
                         result.add(tmpSolutionVendor);
                     }
+                    
+                    //v 1_2
+                    
+                    else if(tmpClassID == PlatformSettings_AndroidPhoneInteractionSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == PlatformSettings_AndroidPhoneSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == PlatformSettings_DesktopSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == PlatformSettings_DigitalTV_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == PlatformSettings_IOSPhoneSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == PlatformSettings_SimplePhoneSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == PlatformSettings_WindowsPhoneSettings_ID)
+                    {
+                        
+                    }
+
+                    else if(tmpClassID == ApplicationSettings_EasyOneCommunicatorSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ApplicationSettings_EKioskSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ApplicationSettings_Maavis_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ApplicationSettings_MSSurfaceSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ApplicationSettings_ReadWriteGold_TextHelp_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ApplicationSettings_SAToGoSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ApplicationSettings_SocialNetworkAppSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ApplicationSettings_SpeechStream_TextHelp_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ApplicationSettings_WebAnywhereSettings_ID)
+                    {
+                        
+                    }
+
+                    else if(tmpClassID == GNOMEDesktopAccessibilitySettings_ID)
+                    {
+                        
+                    }
+
+                    else if(tmpClassID == BrowserSettings_Firefox10_0_1Settings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == BrowserSettings_IE8Settings_ID)
+                    {
+                        
+                    }
+
+                    else if(tmpClassID == ScreenMagnifierSettings_ISO24751ScreenMagnifierSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ScreenMagnifierSettings_LinuxBuiltInScreenMagnifierSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ScreenMagnifierSettings_WindowsBuiltInScreenMagnifierSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ScreenMagnifierSettings_ZoomTextSettings_ID)
+                    {
+                        
+                    }
+
+                    else if(tmpClassID == ScreenReaderSettings_ISO24751ScreenReaderSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ScreenReaderSettings_JAWSSettings_ID)
+                    {
+                        if(result == null)
+                            result = new ArrayList<JAWSSettings>();
+                        JAWSSettings tmpJAWSSettings = new JAWSSettings();
+                        
+                        tmpJAWSSettings.SharedFiles = getPropertyValue(subject.toString(), "SharedFiles");
+                        tmpJAWSSettings.UserFiles = getPropertyValue(subject.toString(), "UserFiles");
+                        tmpJAWSSettings.UserOptionsGroup_ProgressBarUpdateInterval = Integer.parseInt(getPropertyValue(subject.toString(), "UserOptionsGroup_ProgressBarUpdateInterval"));
+                        tmpJAWSSettings.UserOptionsGroup_TypingEcho = Integer.parseInt(getPropertyValue(subject.toString(), "UserOptionsGroup_TypingEcho"));
+                        tmpJAWSSettings.UserOptionsGroup_bVirtViewer = Integer.parseInt(getPropertyValue(subject.toString(), "UserOptionsGroup_bVirtViewer"));
+                        tmpJAWSSettings.UserOptionsGroup_ScreenEcho = Integer.parseInt(getPropertyValue(subject.toString(), "UserOptionsGroup_ScreenEcho"));
+                        tmpJAWSSettings.UserOptionsGroup_TypingInterrupt = Integer.parseInt(getPropertyValue(subject.toString(), "UserOptionsGroup_TypingInterrupt"));
+                        tmpJAWSSettings.UserOptionsGroup_InsertKeyMode = getPropertyValue(subject.toString(), "UserOptionsGroup_InsertKeyMode");
+                        tmpJAWSSettings.UserOptionsGroup_KeyRepeat = Integer.parseInt(getPropertyValue(subject.toString(), "UserOptionsGroup_KeyRepeat"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_SkipPastRepeatedText = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_SkipPastRepeatedText"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_BlockQuoteIndication = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_BlockQuoteIndication"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_ExpandAbbreviations = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_ExpandAbbreviations"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_ExpandAcronyms = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_ExpandAcronyms"));
+                        if(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_SpeakAccessKeysWithinWebPages").toLowerCase().equals("true"))
+                            tmpJAWSSettings.WebHTMLPDFGroup_SpeakAccessKeysWithinWebPages = true;
+                        else
+                            tmpJAWSSettings.WebHTMLPDFGroup_SpeakAccessKeysWithinWebPages = false;
+                        if(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_CustomPlaceMarkerPageSummary").toLowerCase().equals("true"))
+                            tmpJAWSSettings.WebHTMLPDFGroup_CustomPlaceMarkerPageSummary = true;
+                        else
+                            tmpJAWSSettings.WebHTMLPDFGroup_CustomPlaceMarkerPageSummary = false;
+                        tmpJAWSSettings.WebHTMLPDFGroup_TextBlockLenght = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_TextBlockLenght"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_LinesPerDefault = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_LinesPerDefault"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_MaxLineLength = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_MaxLineLength"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_DocumentPresentationMode = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_DocumentPresentationMode"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_ScreenFollowVCursor = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_ScreenFollowVCursor"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_WrapNavigation = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_WrapNavigation"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_IncludeGraphics = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_IncludeGraphics"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_GraphicRenderingOption = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_GraphicRenderingOption"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_GraphicalLinkLastResort = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_GraphicalLinkLastResort"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_FilterConsecutiveDuplicateLinks = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_FilterConsecutiveDuplicateLinks"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_IdentifyLinkType = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_IdentifyLinkType"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_IdentifySamePageLink = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_IdentifySamePageLink"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_LinkText = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_LinkText"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_IncludeGraphicLinks = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_IncludeGraphicLinks"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_IncludeImageMapLinks = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_IncludeImageMapLinks"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_HeadingIndication = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_HeadingIndication"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_FrameIndication = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_FrameIndication"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_IgnoreInlineFrames = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_IgnoreInlineFrames"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_ListIndication = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_ListIndication"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_IndicateColSpan = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_IndicateColSpan"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_TableDetection = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_TableDetection"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_EmbeddedActiveXSupport = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_EmbeddedActiveXSupport"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_FormFieldPromptOptions = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_FormFieldPromptOptions"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_PageRefreshFilter = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_PageRefreshFilter"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_IndicateElementAttribute = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_IndicateElementAttribute"));
+                        tmpJAWSSettings.WebHTMLPDFGroup_ButtonTextOptions = Integer.parseInt(getPropertyValue(subject.toString(), "WebHTMLPDFGroup_ButtonTextOptions"));
+                        tmpJAWSSettings.FormModeGroup_AutoFormsMode = Integer.parseInt(getPropertyValue(subject.toString(), "FormModeGroup_AutoFormsMode"));
+                        tmpJAWSSettings.FormModeGroup_AtuFormsModeThreshold = Integer.parseInt(getPropertyValue(subject.toString(), "FormModeGroup_AtuFormsModeThreshold"));
+                        tmpJAWSSettings.FormModeGroup_FormsModeAutoOff = Integer.parseInt(getPropertyValue(subject.toString(), "FormModeGroup_FormsModeAutoOff"));
+                        tmpJAWSSettings.FormModeGroup_IndicateFormsModeWithSounds = Integer.parseInt(getPropertyValue(subject.toString(), "FormModeGroup_IndicateFormsModeWithSounds"));
+                        tmpJAWSSettings.FormModeGroup_EnterFormsModeSound = getPropertyValue(subject.toString(), "FormModeGroup_EnterFormsModeSound");
+                        tmpJAWSSettings.FormModeGroup_ExitFormsModeSound = getPropertyValue(subject.toString(), "FormModeGroup_ExitFormsModeSound");
+                        tmpJAWSSettings.TextProcessingGroup_FilterRepeatedCharacters = getPropertyValue(subject.toString(), "TextProcessingGroup_FilterRepeatedCharacters");
+                        tmpJAWSSettings.TextProcessingGroup_IndicateCapitalization = getPropertyValue(subject.toString(), "TextProcessingGroup_IndicateCapitalization");
+                        tmpJAWSSettings.TextProcessingGroup_ListItem = getPropertyValue(subject.toString(), "TextProcessingGroup_ListItem");
+                        tmpJAWSSettings.TextProcessingGroup_SpellAlphanumericData = getPropertyValue(subject.toString(), "TextProcessingGroup_SpellAlphanumericData");
+                        tmpJAWSSettings.TextProcessingGroup_IndicateNewLinesWhen = getPropertyValue(subject.toString(), "TextProcessingGroup_IndicateNewLinesWhen");
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_IndicateTables").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_IndicateTables = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_IndicateTables = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_SmartWordReading").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_SmartWordReading = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_SmartWordReading = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_MixedCaseProcessing").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_MixedCaseProcessing = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_MixedCaseProcessing = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_UseDictionary").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_UseDictionary = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_UseDictionary = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_SpellPhoneticallyAlways").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_SpellPhoneticallyAlways = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_SpellPhoneticallyAlways = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_DetectLanguages").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_DetectLanguages = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_DetectLanguages = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_GeneralizedDialect").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_GeneralizedDialect = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_GeneralizedDialect = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_EnhancedEditSupport").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_EnhancedEditSupport = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_EnhancedEditSupport = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_SayItemStateFirst").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_SayItemStateFirst = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_SayItemStateFirst = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_SayWindowTypeFirst").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_SayWindowTypeFirst = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_SayWindowTypeFirst = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_SayWindowStateFirst").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_SayWindowStateFirst = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_SayWindowStateFirst = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_SayIndentedCharacters").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_SayIndentedCharacters = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_SayIndentedCharacters = false;
+                        tmpJAWSSettings.TextProcessingGroup_NumericDateProcessing = getPropertyValue(subject.toString(), "TextProcessingGroup_NumericDateProcessing");
+                        tmpJAWSSettings.TextProcessingGroup_NumberProcessing = getPropertyValue(subject.toString(), "TextProcessingGroup_NumberProcessing");
+                        tmpJAWSSettings.TextProcessingGroup_SpeakSingleDigitsIfNumberContains = getPropertyValue(subject.toString(), "TextProcessingGroup_SpeakSingleDigitsIfNumberContains");
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_IfNumberContainsDashes").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_IfNumberContainsDashes = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_IfNumberContainsDashes = false;
+                        if(getPropertyValue(subject.toString(), "TextProcessingGroup_SpeakDollars").toLowerCase().equals("true"))
+                            tmpJAWSSettings.TextProcessingGroup_SpeakDollars = true;
+                        else
+                            tmpJAWSSettings.TextProcessingGroup_SpeakDollars = false;
+                        tmpJAWSSettings.OtherSettings_VerbosityLevel = getPropertyValue(subject.toString(), "OtherSettings_VerbosityLevel");
+                        tmpJAWSSettings.OtherSettings_SpeechAndSoundSchemes = getPropertyValue(subject.toString(), "OtherSettings_SpeechAndSoundSchemes");
+                        tmpJAWSSettings.OtherSettings_SayAll = getPropertyValue(subject.toString(), "OtherSettings_SayAll");
+                        tmpJAWSSettings.OtherSettings_GraphicsAndSymbols = getPropertyValue(subject.toString(), "OtherSettings_GraphicsAndSymbols");
+                        tmpJAWSSettings.OtherSettings_Braille = getPropertyValue(subject.toString(), "OtherSettings_Braille");
+                        tmpJAWSSettings.OtherSettings_CaretAndCursor = getPropertyValue(subject.toString(), "OtherSettings_CaretAndCursor");
+                        tmpJAWSSettings.OtherSettings_Synthesizer = getPropertyValue(subject.toString(), "OtherSettings_Synthesizer");
+                        tmpJAWSSettings.OtherSettings_Punctuation = getPropertyValue(subject.toString(), "OtherSettings_Punctuation");
+                        tmpJAWSSettings.OtherSettings_VoiceAliases = getPropertyValue(subject.toString(), "OtherSettings_VoiceAliases");
+                        tmpJAWSSettings.OtherSettings_WindowClasses = getPropertyValue(subject.toString(), "OtherSettings_WindowClasses");
+                        tmpJAWSSettings.OtherSettings_Keyboard = getPropertyValue(subject.toString(), "OtherSettings_Keyboard");
+                        tmpJAWSSettings.OtherSettings_CustomHighlight = getPropertyValue(subject.toString(), "OtherSettings_CustomHighlight");
+                        
+                        tmpJAWSSettings.OtherSettings_ResearchIt = getPropertyValue(subject.toString(), "OtherSettings_ResearchIt");
+                        tmpJAWSSettings.OtherSettings_TextAnalyzer = getPropertyValue(subject.toString(), "OtherSettings_TextAnalyzer");
+                        tmpJAWSSettings.OtherSettings_ConventientOCR = getPropertyValue(subject.toString(), "OtherSettings_ConventientOCR");
+                        tmpJAWSSettings.OtherSettings_Miscellaneous_SleppMode = getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_SleppMode");
+                        if(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_SearchForPrompts").toLowerCase().equals("true"))
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_SearchForPrompts = true;
+                        else
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_SearchForPrompts = false;
+                        if(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_UseVirtualRibbonMenu").toLowerCase().equals("true"))
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_UseVirtualRibbonMenu = true;
+                        else
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_UseVirtualRibbonMenu = false;
+                        if(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_UseVirtualPCCursor").toLowerCase().equals("true"))
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_UseVirtualPCCursor = true;
+                        else
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_UseVirtualPCCursor = false;
+                        tmpJAWSSettings.OtherSettings_Miscellaneous_TrackFocusRectanle = getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_TrackFocusRectanle");
+                        tmpJAWSSettings.OtherSettings_Miscellaneous_TextOutDelay = Integer.parseInt(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_TextOutDelay"));
+                        tmpJAWSSettings.OtherSettings_Miscellaneous_PixelsPerSpace = Integer.parseInt(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_PixelsPerSpace"));
+                        tmpJAWSSettings.OtherSettings_Miscellaneous_PixelsPerTab = Integer.parseInt(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_PixelsPerTab"));
+                        tmpJAWSSettings.OtherSettings_Miscellaneous_LeftMargin = Integer.parseInt(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_LeftMargin"));
+                        if(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_UnderlineProximity").toLowerCase().equals("true"))
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_UnderlineProximity = true;
+                        else
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_UnderlineProximity = false;
+                        if(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_ClickTolerance").toLowerCase().equals("true"))
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_ClickTolerance = true;
+                        else
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_ClickTolerance = false;
+                        if(getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_RelyOnMSAA").toLowerCase().equals("true"))
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_RelyOnMSAA = true;
+                        else
+                            tmpJAWSSettings.OtherSettings_Miscellaneous_RelyOnMSAA = false;
+                        tmpJAWSSettings.OtherSettings_Miscellaneous_MSAAMode = getPropertyValue(subject.toString(), "OtherSettings_Miscellaneous_MSAAMode");
+                        tmpJAWSSettings.PlaceMarkers = getPropertyValue(subject.toString(), "PlaceMarkers");
+                        tmpJAWSSettings.ConfigurationFilesExtension = getPropertyValue(subject.toString(), "ConfigurationFilesExtension");
+                        tmpJAWSSettings.DictionaryFilesExtension = getPropertyValue(subject.toString(), "DictionaryFilesExtension");
+                        tmpJAWSSettings.GraphicLabelFilesExtension = getPropertyValue(subject.toString(), "GraphicLabelFilesExtension");
+                        tmpJAWSSettings.KeyboardMappingFilesExtension = getPropertyValue(subject.toString(), "KeyboardMappingFilesExtension");
+                        tmpJAWSSettings.BrailleSettingFilesExtension = getPropertyValue(subject.toString(), "BrailleSettingFilesExtension");
+                        tmpJAWSSettings.SpeechAndSoundSchemeFilesExtension = getPropertyValue(subject.toString(), "SpeechAndSoundSchemeFilesExtension");
+                        tmpJAWSSettings.ScriptSourceFilesExtension = getPropertyValue(subject.toString(), "ScriptSourceFilesExtension");
+                        tmpJAWSSettings.ScriptCompiledSourceFilesExtension = getPropertyValue(subject.toString(), "ScriptCompiledSourceFilesExtension");
+                        tmpJAWSSettings.ScriptMessagesFilesExtension = getPropertyValue(subject.toString(), "ScriptMessagesFilesExtension");
+                        tmpJAWSSettings.ScriptHelpFiles = getPropertyValue(subject.toString(), "ScriptHelpFiles");
+                        
+                        
+                        result.add(tmpJAWSSettings);
+                    }
+                    else if(tmpClassID == ScreenReaderSettings_NVDASettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ScreenReaderSettings_OrcaSettings_ID)
+                    {
+                        
+                    }
+                    else if(tmpClassID == ScreenReaderSettings_WinSevenBuiltInNarratorSettings_ID)
+                    {
+                        
+                    }
+                    
                 }
             } 
             
