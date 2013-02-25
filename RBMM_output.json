@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Windows Built-in Screen Magnifier",
+    "id": "com.microsoft.windows.magnifier",
+    "contexts": {
+      "OS": [
+        {
+          "id": "win32",
+          "version": ">=5.0"
+        }
+      ]
+    },
+    "settingsHandlers": [
+      {
+        "type": "gpii.windows.registrySettingsHandler",
+        "options": {
+          "hKey": "HKEY_CURRENT_USER",
+          "path": "Software\\Microsoft\\ScreenMagnifier"
+        },
+        "capabilities": [
+          "applications.com\\.microsoft\\.windows\\.magnifier.id",
+          "display.screenEnhancement.screenMagnification.applications.com\\.microsoft\\.windows\\.magnifier.name"
+        ],
+        "capabilitiesTransformations": {
+          "Magnification": {
+            "expander": {
+              "type": "gpii.transformer.scaleValue",
+              "inputPath": "display.screenEnhancement.magnification",
+              "outputPath": "value",
+              "factor": 100.0
+            },
+            "dataType": {
+              "expander": {
+                "type": "fluid.model.transform.literalValue",
+                "value": "REG_DWORD"
+              }
+            }
+          },
+          "Invert": {
+            "expander": {
+              "type": "fluid.model.transform.value",
+              "inputPath": "display.screenEnhancement.invertImages",
+              "outputPath": "value"
+            },
+            "dataType": {
+              "expander": {
+                "type": "fluid.model.transform.literalValue",
+                "value": "REG_DWORD"
+              }
+            }
+          },
+          "expander": {
+            "type": "fluid.model.transform.valueMapper",
+            "inputPath": "display.screenEnhancement.tracking",
+            "options": {
+              "mouse": {
+                "outputPath": "FollowMouse",
+                "outputValue": {
+                  "value": 1,
+                  "dataType": "REG_DWORD"
+                }
+              },
+              "caret": {
+                "outputPath": "FollowCaret",
+                "outputValue": {
+                  "value": 1,
+                  "dataType": "REG_DWORD"
+                }
+              },
+              "focus": {
+                "outputPath": "FollowFocus",
+                "outputValue": {
+                  "value": 1,
+                  "dataType": "REG_DWORD"
+                }
+              }
+            }
+          }
+        },
+        "settings": {
+          "Invert": true
+        }
+      }
+    ],
+    "lifecycleManager": {
+      "start": [
+        "setSettings",
+        {
+          "type": "gpii.launch.exec",
+          "command": "${{environment}.SystemRoot}\\System32\\Magnify.exe"
+        }
+      ],
+      "stop": [
+        {
+          "type": "gpii.launch.exec",
+          "command": "${{environment}.SystemRoot}\\System32\\taskkill.exe /f /im Magnify.exe"
+        },
+        "restoreSettings"
+      ]
+    }
+  }
+]
