@@ -1,0 +1,2 @@
+serviceClass: org.cloud.client.GreetingService
+path: D8EBDC265F4FCDF1AAFC17934CB57489.gwt.rpc
