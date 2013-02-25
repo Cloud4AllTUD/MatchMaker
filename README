@@ -1,8 +1,0 @@
-This software is the implementation of a match maker inside the Cloud4All
-project. You can find more information about Cloud4All under
-http://cloud4all.info
-
-Dependencies:
-GSON: Google library to parse json data
-http://code.google.com/p/google-gson/downloads/list#
-
