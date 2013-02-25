@@ -1,0 +1,14 @@
+{
+    "font": {
+        "size": 16
+    },
+    "os": {
+        "subtype": "debian", 
+        "version": 6.05 ,
+        "type": "linux"
+    },
+    "desktop-environment": {
+        "name": "gnome",
+        "version": 3.2
+    }
+}
